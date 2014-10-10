@@ -1,0 +1,26 @@
+{
+    "Item" : {
+        "lookup": 3
+    },
+    "Material" : {
+        "lookup": 3
+    },
+    "Patron" : {
+        "lookup": 3
+    },
+    "Town" : {
+        "lookup": 1
+    },
+    "Branch" : {
+        "lookup": 3
+    },
+    "SMD" : {
+        "lookup": 1
+    },
+    "PatronCategory" : {
+        "lookup": 1
+    },
+    "Location" : {
+        "lookup": 1
+    }
+}

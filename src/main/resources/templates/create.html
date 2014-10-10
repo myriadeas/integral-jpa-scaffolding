@@ -1,0 +1,29 @@
+<div>
+    <form name="form${entity.name}" class="form-horizontal" form-validation form-domain="${entity.name}" ng-submit="save()">
+        <fieldset>
+            <legend>
+                <strong>{{'${entity.name.toLowerCase()}.create' | i18n}}</strong>
+            </legend>
+        </fieldset>
+        <div class="alert alert-error" ng-show="form${entity.name}.$error.uniqueConstraint">
+            <span class="error">Unique Constraint Violation.</span>
+        </div>
+#foreach($attribute in $entity.attributes)
+    #if(${renderEditor.isIncluded($attribute)})
+       <div class="control-group" ng-class="{error: form${entity.name}['${renderEditor.getInputName($entity, $attribute)}'].$invalid && form${entity.name}['${renderEditor.getInputName($entity, $attribute)}'].$dirty}">
+            <label class="control-label">{{'${entity.name.toLowerCase()}.${attribute.name}' | i18n}}</label>
+            <div class="controls">
+                ${renderEditor.renderPropertyEditor($entity, $attribute)}
+                <span ng-show="form${entity.name}['${renderEditor.getInputName($entity, $attribute)}'].$error.constraint" class="help-inline">{{form${entity.name}['${renderEditor.getInputName($entity, $attribute)}'].$error.constraintObject.message}}</span>
+                #if(${renderEditor.isUniqueConstraint($entity, $attribute)})
+                #end
+            </div>
+        </div>
+    #end
+#end
+        <div class="row-fluid">
+        	<a id="btnBack" class="btn btn-primary" href="#${entity.name.toLowerCase()}">{{'back'| i18n}}</a>
+        	<input type="submit" id="btnSave" class="btn btn-success" value="{{'save' | i18n}}" />
+        </div>
+    </form>
+</div>

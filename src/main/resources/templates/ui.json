@@ -1,0 +1,14 @@
+{
+    #foreach($entity in $entities)  
+        "${entity.javaType.simpleName}": {
+            #foreach($attribute in $entity.attributes)
+            "${attribute.name}": {
+                "displayList": true
+            },
+            #end
+            "toString": "${renderEditor.getDefaultDomainToString($entity)}",
+            "lookup": 1
+        },
+    #end
+    "":{}
+}

@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12">
+		<legend>
+			<strong>{{title}}</strong>
+		</legend>
+		<dl class="dl-horizontal">
+		#foreach($attribute in $entity.sortedAttributes)
+			#if(${renderViewDisplay.isIncluded($attribute)})
+			<dt class="muted">{{'${entity.name}.${attribute.name}' | i18n}}</dt>
+			     ${renderViewDisplay.renderPropertyViewDisplay($entity, $attribute)}
+		    #end 
+		#end
+		</dl>
+		<m-form-auditable-info ng-model="${entity.name}"></m-form-auditable-info>
+		<m-form-actions entity="${entity.name}" actions="{{actions}}"></m-form-actions>
+	</div>
+</div>
